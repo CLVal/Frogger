@@ -1,19 +1,35 @@
 const canvas = document.getElementById("mi-canvas");
 const ctx=canvas.getContext("2d");
 
-ctx.fillStyle ="#000000";
-ctx.fillRect(0,0, canvas.width, canvas.height);
-ctx.fillStyle ="#00ff00";
 
-let x=45;
-let y=45;
+function fondo(){
+    ctx.fillStyle ="#338bff";
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+    
+    ctx.fillStyle ="#5e3a14";
+    ctx.fillRect(0,0, canvas.width, 135);
+
+    ctx.fillStyle ="#338bff";
+    ctx.fillRect(45,90, 45, 45);
+    ctx.fillRect(225,90, 45, 45);
+    ctx.fillRect(450,90, 45, 45);
+    ctx.fillRect(630,90, 45, 45);
+
+    ctx.fillStyle ="#5e3a14";
+    ctx.fillRect(0,585, canvas.width, 45);
+}
+
+
+fondo();
+let x=360;
+let y=585;
 let mov=45;
+ctx.fillStyle ="#00ff00";
 ctx.fillRect(x,y, 45,45);
 
 document.addEventListener('keydown', (event) => {
     var tecla = event.key;
-    ctx.fillStyle ="#000000";
-    ctx.fillRect(0,0, canvas.width, canvas.height);
+    fondo();
 
     switch (tecla){
         case 'ArrowUp': 
@@ -48,3 +64,5 @@ document.addEventListener('keydown', (event) => {
     ctx.fillRect(x,y, 45,45);
 
 });
+
+
