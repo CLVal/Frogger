@@ -1,13 +1,31 @@
 const canvas = document.getElementById("mi-canvas");
 const ctx=canvas.getContext("2d");
-
-
+const contador = document.getElementById("contador");
+const usuario = document.getElementById("usuario");
+const aceptar = document.getElementById("aceptar");
+const con_usuario = document.getElementById("con_usuario");
+let intervalo = 0;
+let ganar = 0;
+let hrs = 0;
+let min = 0;
+let seg = 0;    
 
 const lago = new Image();
 lago.src = "./statics/img/lago.png";
 
 const obstaculos = new Image();
 obstaculos.src = "./statics/img/objetos.png";
+
+//cookies 
+// if (ganar == 0) {
+//     let día = new Date();
+// día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
+// var cookievalue = "BEPC";
+// document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString()+ ";path= /;";
+
+// cookievalue = 0;
+// document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString() + ";path= /;";
+// }
 
 // const tortuga1 = new Image();
 // tortuga1.src = "./statics/img/tortuga1.png";
@@ -81,7 +99,10 @@ function fondo(){
     }
 
     if(jugar == 1){
-        
+        contador.parentElement.style.display = "block";
+        ctx.strokeStyle="#ffffff";
+        ctx.font = "20px sans-serif"
+        ctx.strokeText("Contador.- ", canvas.width/2, canvas.height/7);
         slime.mover();
         morada.mover();
         tronco.mover();
@@ -104,10 +125,23 @@ document.addEventListener('keydown', (event) => {
     var tecla = event.key;
     if(tecla =='Enter' && jugar == 0){
         jugar = 1;
+        // ganar = 1;
+        // if (ganar == 1) {
+        //     con_usuario.style.display = "block";
+        //     aceptar.addEventListener("click",()=>{
+        //         cookievalue = usuario.value;
+        //         con_usuario.style.display = "none";
+        //     });
+        //     document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
+        //     cookievalue = contador.value;
+        //     document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
+        // }
+        cronometrar();
     } else if( jugar ==1 && tecla == 'Enter'){
         jugar = 0;
+        parar();
+        contador.parentElement.style.display = "none";
     }
-
     
     if (jugar == 1){
         switch (tecla){
@@ -160,12 +194,37 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             default:
-                console.log("Esa tecla no vale")
+                console.log("Esa tecla no vale");
         }
     }
-    
-    
 
 });
+//Cronometro, inciar, parar y terminar
+function cronometrar(){
+    escribir();
+    intervalo = setInterval(escribir,1000);
+}
 
+function escribir(){
+    var hrs_aux, min_aux, seg_aux;
+    seg++;
+    if (seg>59){min++;seg=0;}
+    if (min>59){hrs++;min=0;}
+    if (hrs>24){hrs=0;}
+
+    if (seg<10){seg_aux="0"+seg;}else{seg_aux=seg;}
+    if (min<10){min_aux="0"+min;}else{min_aux=min;}
+    if (hrs<10){hrs_aux="0"+hrs;}else{hrs_aux=hrs;}
+
+    contador.innerHTML = hrs_aux + ":" + min_aux + ":" + seg_aux; 
+}
+
+function reiniciar(){
+    clearInterval(id);
+    contador.innerHTML="00:00:00";
+    hrs=0;min=0;seg=0;
+}
+function parar(){
+clearInterval(intervalo);
+}
 
