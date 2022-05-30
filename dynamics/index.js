@@ -414,4 +414,3 @@ function reiniciar(){
 function parar(){
 clearInterval(intervalo);
 }
-
