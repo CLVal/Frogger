@@ -31,7 +31,6 @@ let lirio2=0;
 let lirio3=0;
 let lirio4=0;
 let con=0;
-let victoria=0;
 let día = new Date();
 
 if (document.cookie == "") {
