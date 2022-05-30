@@ -10,7 +10,8 @@ const lirio11 = document.getElementById("lirio11");
 const lirio22 = document.getElementById("lirio22");
 const lirio33 = document.getElementById("lirio33");
 const lirio44 = document.getElementById("lirio44");
-
+const valor = document.getElementById("puntucion");
+const nombre = document.getElementById("nombre");
 const boom = new Audio("./statics/media/audio/boom-sound-effect.mp3");
 const ring = new Audio("./statics/media/audio/sonic-ring-sound-effect-hd.mp3");
 const gameOver = new Audio("./statics/media/audio/undertale-game-over-theme.mp3");
@@ -192,33 +193,33 @@ function fondo(){
 
 
 
-        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
-           ){
-            tortuga1.x=300;
-            tortuga1.y=570;
-            vidas--;
-            boom.volume = 0.5;
-            boom.play();
+        // if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+        //    ){
+        //     tortuga1.x=300;
+        //     tortuga1.y=570;
+        //     vidas--;
+        //     boom.volume = 0.5;
+        //     boom.play();
             
-            console.log("colisión "," vidarestante: ", vidas);
+        //     console.log("colisión "," vidarestante: ", vidas);
 
-            if(vidas == 3){
-                tortuga1.img.src ="statics/img/tortuga2.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 2){
-                tortuga1.img.src ="statics/img/tortuga3.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 1){
-                tortuga1.img.src ="statics/img/tortuga4.png";
-                console.log("entras?nomanches");
-            }
+        //     if(vidas == 3){
+        //         tortuga1.img.src ="statics/img/tortuga2.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 2){
+        //         tortuga1.img.src ="statics/img/tortuga3.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 1){
+        //         tortuga1.img.src ="statics/img/tortuga4.png";
+        //         console.log("entras?nomanches");
+        //     }
 
-        }      
+        // }      
 
         
 
