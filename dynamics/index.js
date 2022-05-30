@@ -11,6 +11,11 @@ const lirio22 = document.getElementById("lirio22");
 const lirio33 = document.getElementById("lirio33");
 const lirio44 = document.getElementById("lirio44");
 
+const boom = new Audio("./statics/media/audio/boom-sound-effect.mp3");
+const ring = new Audio("./statics/media/audio/sonic-ring-sound-effect-hd.mp3");
+const gameOver = new Audio("./statics/media/audio/undertale-game-over-theme.mp3");
+const victory = new Audio("./statics/media/audio/luma-theme-super-mario-galaxy.mp3");
+
 let intervalo = 0;
 let ganar = 0;
 let hrs = 0;
@@ -129,6 +134,8 @@ function fondo(){
     }
 
     if(victoria==1){
+        victory.volume = 0.5;
+        victory.play();
         ctx.drawImage(pantalla_gana, 0,0, 720, 630);
         contador.parentElement.style.display = "none";
         noVidas.parentElement.style.display = "none";
@@ -147,6 +154,10 @@ function fondo(){
     }
 
     if(jugar == 1){
+        gameOver.pause();
+        gameOver.currentTime = 0;
+        victory.pause();
+        victory.currentTime = 0;
         contador.parentElement.style.display = "block";
         noVidas.parentElement.style.display = "block";
         ctx.strokeStyle="#ffffff";
@@ -165,31 +176,33 @@ function fondo(){
 
 
 
-        // if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
-        //    ){
-        //     tortuga1.x=300;
-        //     tortuga1.y=570;
-        //     vidas--;
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
+            tortuga1.x=300;
+            tortuga1.y=570;
+            vidas--;
+            boom.volume = 0.5;
+            boom.play();
             
-        //     console.log("colisión "," vidarestante: ", vidas);
+            console.log("colisión "," vidarestante: ", vidas);
 
-        //     if(vidas == 3){
-        //         tortuga1.img.src ="statics/img/tortuga2.png";
-        //         console.log("entras?nomanches");
-        //     } else if(vidas == 2){
-        //         tortuga1.img.src ="statics/img/tortuga3.png";
-        //         console.log("entras?nomanches");
-        //     } else if(vidas == 1){
-        //         tortuga1.img.src ="statics/img/tortuga4.png";
-        //         console.log("entras?nomanches");
-        //     }
+            if(vidas == 3){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(vidas == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(vidas == 1){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
 
-        // }      
+        }      
 
         
 
@@ -212,6 +225,8 @@ function fondo(){
             lirio11.style.display="none";
             contador.parentElement.style.display = "none";
             noVidas.parentElement.style.display = "none";
+            gameOver.volume = 0.5;
+            gameOver.play();
         }
 
         
@@ -222,6 +237,8 @@ function fondo(){
             lirio1=1;
             dibujaX = tortuga1.x;
             dibujaY = tortuga1.Y;
+            ring.volume = 0.5;
+            ring.play();
             // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             // contenedor_lirios.innerHTML = '<div id="lirio11">X</div>;'
             lirio11.style.display="block";
@@ -242,6 +259,8 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio2=1;
+            ring.volume = 0.5;
+            ring.play();
             // contenedor_lirios.innerHTML = '<div id="lirio22">X</div>;'
             lirio22.style.display="block";
             
@@ -262,6 +281,8 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio3=1;
+            ring.volume = 0.5;
+            ring.play();
             // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             // contenedor_lirios.innerHTML = '<div id="lirio33">X</div>;'
             lirio33.style.display="block";
@@ -282,6 +303,8 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio4=1;
+            ring.volume = 0.5;
+            ring.play();
             // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             // contenedor_lirios.innerHTML = '<div id="lirio44">X</div>;'
             lirio44.style.display="block";
