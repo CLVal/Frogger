@@ -1,0 +1,13 @@
+#contador{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+div{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 420px;
+    top: 82px;
+}
