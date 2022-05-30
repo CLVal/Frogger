@@ -12,6 +12,11 @@ let seg = 0;
 let coli=0;
 let vidas= 4;  
 let pierde=0;
+let lirio1=0;
+let lirio2=0;
+let lirio3=0;
+let lirio4=0;
+let con=0;
 
 const lago = new Image();
 lago.src = "./statics/img/lago.png";
@@ -35,7 +40,7 @@ function colision(x1, y1, w1, h1, x2, y2, w2, h2) {
 }
 
 //cookies 
-if (ganar == 0) {
+if (ganar == 4) {
     let día = new Date();
     día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
     var cookievalue = "BEPC";
@@ -136,30 +141,30 @@ function fondo(){
         // tortuga3.sprites();
         // tortuga4.sprites();
 
-        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
-           ){
-            tortuga1.x=300;
-            tortuga1.y=570;
-            vidas--;
-            console.log("colisión "," vidarestante: ", vidas);
+        // if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+        //    ){
+        //     tortuga1.x=300;
+        //     tortuga1.y=570;
+        //     vidas--;
+        //     console.log("colisión "," vidarestante: ", vidas);
 
-            if(vidas == 3){
-                tortuga1.img.src ="statics/img/tortuga2.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 2){
-                tortuga1.img.src ="statics/img/tortuga3.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 1){
-                tortuga1.img.src ="statics/img/tortuga4.png";
-                console.log("entras?nomanches");
-            }
+        //     if(vidas == 3){
+        //         tortuga1.img.src ="statics/img/tortuga2.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 2){
+        //         tortuga1.img.src ="statics/img/tortuga3.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 1){
+        //         tortuga1.img.src ="statics/img/tortuga4.png";
+        //         console.log("entras?nomanches");
+        //     }
 
-        }      
+        // }      
 
         if(vidas == 0){
             pierde = 1;
@@ -172,6 +177,31 @@ function fondo(){
             contador.parentElement.style.display = "none";
         }
 
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 1 && lirio1==0){
+            ganar++;
+            lirio1=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 300, 135, 10, 10) == 1 && lirio2==0){
+            ganar++;
+            lirio2=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 585, 135, 10, 10) == 1 && lirio3==0){
+            ganar++;
+            lirio3=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 540, 135, 10, 10) == 1 && lirio4==0){
+            ganar++;
+            lirio4=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }
     }
     window.requestAnimationFrame(fondo);
 }
@@ -211,22 +241,27 @@ document.addEventListener('keydown', (event) => {
     if (jugar == 1){
         switch (tecla){
             case 'ArrowUp': 
-                //console.log(tecla);
-                if(tortuga1.y>135)         //no deja que se salga del canvas
+                console.log(tecla);
+                if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 0, 135, 90, 80) == 0 &&
+                    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 150, 135, 150, 40) == 0 && 
+                    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 365, 135, 150, 65) == 0 && 
+                    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 640, 135, 90, 80) == 0){
+                    if(tortuga1.y>135)         //no deja que se salga del canvas
                     tortuga1.y-=mov;
-                //console.log(tortuga1.y);
-                if(tortuga1.spriteX == 47){
-                    tortuga1.spriteX = 250;
-                } else if(tortuga1.spriteX == 250){
-                    tortuga1.spriteX = 47;
+                    console.log(tortuga1.y);
+                    if(tortuga1.spriteX == 47){
+                        tortuga1.spriteX = 250;
+                    } else if(tortuga1.spriteX == 250){
+                        tortuga1.spriteX = 47;
+                    }
                 }
                 break;
     
             case 'ArrowDown':
-                //console.log(tecla);
+                console.log(tecla);
                 if(tortuga1.y<585)       //no deja que se salga del canvas
                     tortuga1.y+=mov;
-                //console.log(tortuga1.y);
+                console.log(tortuga1.y);
                 if(tortuga1.spriteX == 47){
                     tortuga1.spriteX = 250;
                 } else if(tortuga1.spriteX == 250){
@@ -235,26 +270,34 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             case 'ArrowRight':
-                //console.log(tecla);
-                if(tortuga1.x<675)      //no deja que se salga del canvas
-                    tortuga1.x+=mov;
-                //console.log(tortuga1.x);
-                if(tortuga1.spriteX == 47){
-                    tortuga1.spriteX = 250;
-                } else if(tortuga1.spriteX == 250){
-                    tortuga1.spriteX = 47;
+                if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 150, 135, 150, 40) == 0 && 
+                   colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 365, 135, 150, 65) == 0 && 
+                   colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 635, 135, 90, 80) == 0){
+                    console.log(tecla);
+                    if(tortuga1.x<675)      //no deja que se salga del canvas
+                        tortuga1.x+=mov;
+                    console.log(tortuga1.x);
+                    if(tortuga1.spriteX == 47){
+                        tortuga1.spriteX = 250;
+                    } else if(tortuga1.spriteX == 250){
+                        tortuga1.spriteX = 47;
+                    }
                 }
                 break;
     
             case 'ArrowLeft':
-                //console.log(tecla);
-                if(tortuga1.x>0)         //no deja que se salga del canvas
-                    tortuga1.x-=mov;
-                //console.log(tortuga1.x);
-                if(tortuga1.spriteX == 47){
-                    tortuga1.spriteX = 250;
-                } else if(tortuga1.spriteX == 250){
-                    tortuga1.spriteX = 47;
+                if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 0, 135, 95, 80) == 0 &&
+                   colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 155, 135, 150, 40) == 0 && 
+                   colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 365, 135, 170, 65) == 0){
+                    console.log(tecla);
+                    if(tortuga1.x>0)         //no deja que se salga del canvas
+                        tortuga1.x-=mov;
+                    console.log(tortuga1.x);
+                    if(tortuga1.spriteX == 47){
+                        tortuga1.spriteX = 250;
+                    } else if(tortuga1.spriteX == 250){
+                        tortuga1.spriteX = 47;
+                    }
                 }
                 break;
     
