@@ -8,13 +8,25 @@ let intervalo = 0;
 let ganar = 0;
 let hrs = 0;
 let min = 0;
-let seg = 0;    
+let seg = 0;  
+let coli=0;
+let vidas= 4;  
+let pierde=1;
 
 const lago = new Image();
 lago.src = "./statics/img/lago.png";
 
 const obstaculos = new Image();
 obstaculos.src = "./statics/img/objetos.png";
+
+function colision(x1, y1, w1, h1, x2, y2, w2, h2) {
+    if(x1 >= x2+w2 || x1+w1 <= x2 || y1 >= y2+h2 || y1+h1 <= y2)
+        coli=0;
+    else
+        coli=1;
+
+    return coli;
+}
 
 //cookies 
 // if (ganar == 0) {
@@ -71,8 +83,8 @@ class Objetito {
 
 }
 
-const slime = new Objetito(6, 28, 80, 40, 20, 495, 80, 40, 5, 5, "./statics/img/objetos.png");
-const morada = new Objetito(89, 15, 100, 60, 30, 445, 80, 45, 10, 10, "./statics/img/objetos.png");
+const slime = new Objetito(6, 28, 80, 40, 20, 495, 80, 30, 3, 5, "./statics/img/objetos.png");
+const morada = new Objetito(89, 15, 100, 60, 30, 445, 80, 25, 5, 10, "./statics/img/objetos.png");
 const tronco = new Objetito(6, 72, 87, 50, 290, 390, 80, 45, 5, 5, "./statics/img/objetos.png");
 const gato = new Objetito(108, 81, 70, 40, 700, 340, 80, 50, 7, 7, "./statics/img/objetos.png");
 const coete = new Objetito(6, 143, 100, 42, 400, 290, 90, 45, 3, 3, "./statics/img/objetos.png");
@@ -102,7 +114,7 @@ function fondo(){
         contador.parentElement.style.display = "block";
         ctx.strokeStyle="#ffffff";
         ctx.font = "20px sans-serif"
-        ctx.strokeText("Contador.- ", canvas.width/2, canvas.height/7);
+        ctx.strokeText("Contador.- ", canvas.width/2 - 30, canvas.height/7);
         slime.mover();
         morada.mover();
         tronco.mover();
@@ -110,6 +122,15 @@ function fondo(){
         coete.mover();
         pez.mover();
         tortuga1.sprites();
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas)){
+            tortuga1.x=300;
+            tortuga1.y=570;
+            vidas--;
+            console.log("colisión "," vidarestante: ", vidas);
+        }
+        if(vidas == 0){
+            pierde = 1;
+        }
 
     }
     window.requestAnimationFrame(fondo);
@@ -146,10 +167,10 @@ document.addEventListener('keydown', (event) => {
     if (jugar == 1){
         switch (tecla){
             case 'ArrowUp': 
-                console.log(tecla);
+                //console.log(tecla);
                 if(tortuga1.y>135)         //no deja que se salga del canvas
                     tortuga1.y-=mov;
-                console.log(tortuga1.y);
+                //console.log(tortuga1.y);
                 if(tortuga1.spriteX == 47){
                     tortuga1.spriteX = 250;
                 } else if(tortuga1.spriteX == 250){
@@ -158,10 +179,10 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             case 'ArrowDown':
-                console.log(tecla);
+                //console.log(tecla);
                 if(tortuga1.y<585)       //no deja que se salga del canvas
                     tortuga1.y+=mov;
-                console.log(tortuga1.y);
+                //console.log(tortuga1.y);
                 if(tortuga1.spriteX == 47){
                     tortuga1.spriteX = 250;
                 } else if(tortuga1.spriteX == 250){
@@ -170,10 +191,10 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             case 'ArrowRight':
-                console.log(tecla);
+                //console.log(tecla);
                 if(tortuga1.x<675)      //no deja que se salga del canvas
                     tortuga1.x+=mov;
-                console.log(tortuga1.x);
+                //console.log(tortuga1.x);
                 if(tortuga1.spriteX == 47){
                     tortuga1.spriteX = 250;
                 } else if(tortuga1.spriteX == 250){
@@ -182,10 +203,10 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             case 'ArrowLeft':
-                console.log(tecla);
+                //console.log(tecla);
                 if(tortuga1.x>0)         //no deja que se salga del canvas
                     tortuga1.x-=mov;
-                console.log(tortuga1.x);
+                //console.log(tortuga1.x);
                 if(tortuga1.spriteX == 47){
                     tortuga1.spriteX = 250;
                 } else if(tortuga1.spriteX == 250){
@@ -194,14 +215,14 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             default:
-                console.log("Esa tecla no vale");
+                //console.log("Esa tecla no vale");
         }
     }
 
 });
 //Cronometro, inciar, parar y terminar
 function cronometrar(){
-    escribir();
+    //escribir();
     intervalo = setInterval(escribir,1000);
 }
 
