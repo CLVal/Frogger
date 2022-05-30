@@ -17,6 +17,7 @@ let lirio2=0;
 let lirio3=0;
 let lirio4=0;
 let con=0;
+let victoria=0;
 
 const lago = new Image();
 lago.src = "./statics/img/lago.png";
@@ -38,20 +39,6 @@ function colision(x1, y1, w1, h1, x2, y2, w2, h2) {
 
     return coli;
 }
-
-//cookies 
-if (ganar == 4) {
-    let día = new Date();
-    día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
-    var cookievalue = "BEPC";
-    document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
-
-    cookievalue = 0;
-    document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
-}
-
-// const tortuga1 = new Image();
-// tortuga1.src = "./statics/img/tortuga1.png";
 
 class Objetito {
     constructor(spriteX, spriteY, anchoSprite, altoSprite, x, y, anchoCanvas, altoCanvas, dx, dy, ruta){
@@ -82,12 +69,9 @@ class Objetito {
     sprites (){
         if(this.spriteX==47){
             ctx.drawImage(this.img, this.spriteX, this.spriteY, this.anchoSprite, this.altoSprite, this.x, this.y, this.anchoCanvas, this.altoCanvas);
-            // this.spriteX = 250;
         }
         if(this.spriteX == 250){
-            // ctx.drawImage(tortuga1.img, tortuga1.spriteX, 12, 103, 156, this.x, this.y, 30, 45);
             ctx.drawImage(this.img, this.spriteX, this.spriteY, this.anchoSprite, this.altoSprite, this.x, this.y, this.anchoCanvas, this.altoCanvas);
-            // this.spriteX = 47;
         }
         
     }
@@ -125,6 +109,23 @@ function fondo(){
         ctx.drawImage(pantalla_pierde, 0,0, 720, 630);
     }
 
+    if(victoria==1){
+        ctx.drawImage(pantalla_gana, 0,0, 720, 630);
+        contador.parentElement.style.display = "none";
+        aceptar.addEventListener("click",()=>{
+            cookievalue = usuario.value;
+            con_usuario.style.display = "none";
+            var cookievalue = "BEPC"; 
+            let día = new Date();
+            día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
+            cookievalue = usuario.value;
+            document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+            cookievalue = con;
+            document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+                
+        });
+    }
+
     if(jugar == 1){
         contador.parentElement.style.display = "block";
         ctx.strokeStyle="#ffffff";
@@ -137,70 +138,132 @@ function fondo(){
         coete.mover();
         pez.mover();
         tortuga1.sprites();
-        // tortuga2.sprites();
-        // tortuga3.sprites();
-        // tortuga4.sprites();
 
-        // if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
-        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
-        //    ){
-        //     tortuga1.x=300;
-        //     tortuga1.y=570;
-        //     vidas--;
-        //     console.log("colisión "," vidarestante: ", vidas);
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
+            tortuga1.x=300;
+            tortuga1.y=570;
+            vidas--;
+            console.log("colisión "," vidarestante: ", vidas);
 
-        //     if(vidas == 3){
-        //         tortuga1.img.src ="statics/img/tortuga2.png";
-        //         console.log("entras?nomanches");
-        //     } else if(vidas == 2){
-        //         tortuga1.img.src ="statics/img/tortuga3.png";
-        //         console.log("entras?nomanches");
-        //     } else if(vidas == 1){
-        //         tortuga1.img.src ="statics/img/tortuga4.png";
-        //         console.log("entras?nomanches");
-        //     }
+            if(vidas == 3){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(vidas == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(vidas == 1){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
 
-        // }      
+        }      
 
         if(vidas == 0){
             pierde = 1;
+            jugar = 0;
+            ganar=0;
+            vidas = 4;
+            tortuga1.img.src ="statics/img/tortuga1.png";
+            tortuga1.x=300;
+            tortuga1.y=570;
+            parar();
+            lirio1 = 0;
+            lirio2 = 0;
+            lirio3 = 0;
+            lirio4 = 0;
+            contador.parentElement.style.display = "none";
+        }
+
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 1 && lirio1==0){
+            ganar+=1;
+            console.log(ganar);
+            lirio1=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            if(ganar == 1){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 3){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 300, 135, 10, 10) == 1 && lirio2==0){
+            ganar+=1;
+            console.log(ganar);
+            lirio2=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            if(ganar == 1){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 3){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 585, 135, 10, 10) == 1 && lirio3==0){
+            ganar+=1;
+            console.log(ganar);
+            lirio3=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            if(ganar == 1){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 3){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 540, 135, 10, 10) == 1 && lirio4==0){
+            ganar+=1;
+            console.log(ganar);
+            lirio4=1;
+            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            if(ganar == 1){
+                tortuga1.img.src ="statics/img/tortuga2.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 2){
+                tortuga1.img.src ="statics/img/tortuga3.png";
+                console.log("entras?nomanches");
+            } else if(ganar == 3){
+                tortuga1.img.src ="statics/img/tortuga4.png";
+                console.log("entras?nomanches");
+            }
+            tortuga1.x=300;
+            tortuga1.y=570;
+        }
+
+        if(ganar == 4){
+            ganar=0;
             jugar = 0;
             vidas = 4;
             tortuga1.img.src ="statics/img/tortuga1.png";
             tortuga1.x=300;
             tortuga1.y=570;
             parar();
-            contador.parentElement.style.display = "none";
-        }
-
-        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 1 && lirio1==0){
-            ganar++;
-            lirio1=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
-            tortuga1.x=300;
-            tortuga1.y=570;
-        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 300, 135, 10, 10) == 1 && lirio2==0){
-            ganar++;
-            lirio2=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
-            tortuga1.x=300;
-            tortuga1.y=570;
-        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 585, 135, 10, 10) == 1 && lirio3==0){
-            ganar++;
-            lirio3=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
-            tortuga1.x=300;
-            tortuga1.y=570;
-        }else if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 540, 135, 10, 10) == 1 && lirio4==0){
-            ganar++;
-            lirio4=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
-            tortuga1.x=300;
-            tortuga1.y=570;
+            victoria=1;
+            lirio1 = 0;
+            lirio2 = 0;
+            lirio3 = 0;
+            lirio4 = 0;
+            con_usuario.style.display = "block";
         }
     }
     window.requestAnimationFrame(fondo);
@@ -216,20 +279,14 @@ document.addEventListener('keydown', (event) => {
     var tecla = event.key;
     if(tecla =='Enter' && jugar == 0){
         jugar = 1;
-        ganar = 1;
-        if (ganar == 1) {
-            if(pierde==1){
-                reiniciar();
-                pierde=0;
-            }
-            // con_usuario.style.display = "block";
-            // aceptar.addEventListener("click",()=>{
-            //     cookievalue = usuario.value;
-            //     con_usuario.style.display = "none";
-            // });
-            document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
-            cookievalue = contador.value;
-            document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
+        if(pierde==1){
+            reiniciar();
+            pierde=0;
+        }
+
+        if(victoria==1){
+            reiniciar();
+            victoria=0;
         }
         cronometrar();
     } else if( jugar ==1 && tecla == 'Enter'){
@@ -318,6 +375,7 @@ function cronometrar(){
 function escribir(){
     var hrs_aux, min_aux, seg_aux;
     seg++;
+    con++;
     if (seg>59){
         min++;seg=0;
     }
