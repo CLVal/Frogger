@@ -188,16 +188,19 @@ document.addEventListener('keydown', (event) => {
         jugar = 1;
         ganar = 1;
         if (ganar == 1) {
-            con_usuario.style.display = "block";
-            aceptar.addEventListener("click",()=>{
-                cookievalue = usuario.value;
-                con_usuario.style.display = "none";
-            });
+            if(pierde==1){
+                reiniciar();
+                pierde=0;
+            }
+            // con_usuario.style.display = "block";
+            // aceptar.addEventListener("click",()=>{
+            //     cookievalue = usuario.value;
+            //     con_usuario.style.display = "none";
+            // });
             document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
             cookievalue = contador.value;
             document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
         }
-        // reiniciar();
         cronometrar();
     } else if( jugar ==1 && tecla == 'Enter'){
         jugar = 0;
@@ -256,14 +259,13 @@ document.addEventListener('keydown', (event) => {
                 break;
     
             default:
-                //console.log("Esa tecla no vale");
+                console.log("Esa tecla no vale");
         }
     }
     
-    
-    // tortuga1.ruta=
 
 });
+
 //Cronometro, inciar, parar y terminar
 function cronometrar(){
     //escribir();
