@@ -4,6 +4,7 @@ const contador = document.getElementById("contador");
 const usuario = document.getElementById("usuario");
 const aceptar = document.getElementById("aceptar");
 const con_usuario = document.getElementById("con_usuario");
+const noVidas = document.getElementById("noVidas");
 let intervalo = 0;
 let ganar = 0;
 let hrs = 0;
@@ -103,6 +104,12 @@ function fondo(){
         ctx.fillStyle="#ffffff";
         ctx.fillText("Presiona enter para pausar", canvas.width/2, canvas.height/4*3);
         ctx.textAlign = "center";
+
+
+
+
+
+
     }
 
     if(pierde == 1){
@@ -112,6 +119,7 @@ function fondo(){
     if(victoria==1){
         ctx.drawImage(pantalla_gana, 0,0, 720, 630);
         contador.parentElement.style.display = "none";
+        noVidas.parentElement.style.display = "none";
         aceptar.addEventListener("click",()=>{
             cookievalue = usuario.value;
             con_usuario.style.display = "none";
@@ -122,15 +130,19 @@ function fondo(){
             document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
             cookievalue = con;
             document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
-                
+            
         });
+        
     }
 
     if(jugar == 1){
         contador.parentElement.style.display = "block";
+        noVidas.parentElement.style.display = "block";
         ctx.strokeStyle="#ffffff";
         ctx.font = "20px sans-serif"
-        ctx.strokeText("Contador.- ", canvas.width/2 - 30, canvas.height/7);
+        ctx.strokeText("Vidas: ", canvas.width/2 - 250, canvas.height/7);
+        ctx.strokeText("Contador: ", canvas.width/2 - 50, canvas.height/7);
+        ctx.strokeText("Récord: ", canvas.width/2 +230, canvas.height/7);
         slime.mover();
         morada.mover();
         tronco.mover();
@@ -138,6 +150,7 @@ function fondo(){
         coete.mover();
         pez.mover();
         tortuga1.sprites();
+        noVidas.innerHTML = vidas; 
 
         if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
            colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
@@ -149,6 +162,7 @@ function fondo(){
             tortuga1.x=300;
             tortuga1.y=570;
             vidas--;
+            
             console.log("colisión "," vidarestante: ", vidas);
 
             if(vidas == 3){
@@ -178,13 +192,14 @@ function fondo(){
             lirio3 = 0;
             lirio4 = 0;
             contador.parentElement.style.display = "none";
+            noVidas.parentElement.style.display = "none";
         }
 
         if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 1 && lirio1==0){
             ganar+=1;
             console.log(ganar);
             lirio1=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -201,7 +216,7 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio2=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -218,7 +233,7 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio3=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -235,7 +250,7 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio4=1;
-            //ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -293,6 +308,7 @@ document.addEventListener('keydown', (event) => {
         jugar = 0;
         parar();
         contador.parentElement.style.display = "none";
+        noVidas.parentElement.style.display = "none";
     }
     
     if (jugar == 1){
