@@ -35,15 +35,15 @@ function colision(x1, y1, w1, h1, x2, y2, w2, h2) {
 }
 
 //cookies 
-// if (ganar == 0) {
-//     let día = new Date();
-// día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
-// var cookievalue = "BEPC";
-// document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString()+ ";path= /;";
+if (ganar == 0) {
+    let día = new Date();
+    día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
+    var cookievalue = "BEPC";
+    document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
 
-// cookievalue = 0;
-// document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString() + ";path= /;";
-// }
+    cookievalue = 0;
+    document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+}
 
 // const tortuga1 = new Image();
 // tortuga1.src = "./statics/img/tortuga1.png";
@@ -64,7 +64,6 @@ class Objetito {
         imagen.src = ruta;
         this.img = imagen;
          
-        // "statics/img/dvd.png"
     
     }
 
@@ -97,9 +96,6 @@ const gato = new Objetito(108, 81, 70, 40, 700, 340, 80, 50, 7, 7, "./statics/im
 const coete = new Objetito(6, 143, 100, 42, 400, 290, 90, 45, 8, 8, "./statics/img/objetos.png");
 const pez = new Objetito(113, 129, 62, 57, 600, 220, 70, 65, 10, 10, "./statics/img/objetos.png");
 let tortuga1 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga1.png");
-// const tortuga2 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga2.png");
-// const tortuga3 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga3.png");
-// const tortuga4 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga4.png");
 
 let mov=15;
 let jugar = 0;
@@ -190,17 +186,17 @@ document.addEventListener('keydown', (event) => {
     var tecla = event.key;
     if(tecla =='Enter' && jugar == 0){
         jugar = 1;
-        // ganar = 1;
-        // if (ganar == 1) {
-        //     con_usuario.style.display = "block";
-        //     aceptar.addEventListener("click",()=>{
-        //         cookievalue = usuario.value;
-        //         con_usuario.style.display = "none";
-        //     });
-        //     document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
-        //     cookievalue = contador.value;
-        //     document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
-        // }
+        ganar = 1;
+        if (ganar == 1) {
+            con_usuario.style.display = "block";
+            aceptar.addEventListener("click",()=>{
+                cookievalue = usuario.value;
+                con_usuario.style.display = "none";
+            });
+            document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
+            cookievalue = contador.value;
+            document.cookie = "puntuación=" + encodeURIComponent( cookievalue );
+        }
         // reiniciar();
         cronometrar();
     } else if( jugar ==1 && tecla == 'Enter'){
