@@ -21,6 +21,28 @@
 
 }
 
+#nombre{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 630px;
+    top: 82px;
+}
+
+#puntucion{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 680px;
+    top: 82px;
+}
+
 #lirio11{
     font-family: sans-serif;
     font-size: 20px;
