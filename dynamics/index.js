@@ -87,9 +87,12 @@ const slime = new Objetito(6, 28, 80, 40, 20, 495, 80, 30, 3, 5, "./statics/img/
 const morada = new Objetito(89, 15, 100, 60, 30, 445, 80, 25, 5, 10, "./statics/img/objetos.png");
 const tronco = new Objetito(6, 72, 87, 50, 290, 390, 80, 45, 5, 5, "./statics/img/objetos.png");
 const gato = new Objetito(108, 81, 70, 40, 700, 340, 80, 50, 7, 7, "./statics/img/objetos.png");
-const coete = new Objetito(6, 143, 100, 42, 400, 290, 90, 45, 3, 3, "./statics/img/objetos.png");
+const coete = new Objetito(6, 143, 100, 42, 400, 290, 90, 45, 8, 8, "./statics/img/objetos.png");
 const pez = new Objetito(113, 129, 62, 57, 600, 220, 70, 65, 10, 10, "./statics/img/objetos.png");
 const tortuga1 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga1.png");
+const tortuga2 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga2.png");
+const tortuga3 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga3.png");
+const tortuga4 = new Objetito(47, 12, 103, 156, 330, 585, 40, 55, 0, 0, "./statics/img/tortuga4.png");
 
 let mov=15;
 let jugar = 0;
@@ -122,12 +125,63 @@ function fondo(){
         coete.mover();
         pez.mover();
         tortuga1.sprites();
-        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas)){
+        // tortuga2.sprites();
+        // tortuga3.sprites();
+        // tortuga4.sprites();
+
+        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
             tortuga1.x=300;
             tortuga1.y=570;
             vidas--;
             console.log("colisión "," vidarestante: ", vidas);
         }
+
+        if(colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga2.x, tortuga2.y, tortuga2.anchoCanvas, tortuga2.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
+            tortuga2.x=300;
+            tortuga2.y=570;
+            vidas--;
+            console.log("colisión "," vidarestante: ", vidas);
+        }
+
+        if(colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga3.x, tortuga3.y, tortuga3.anchoCanvas, tortuga3.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
+            tortuga3.x=300;
+            tortuga3.y=570;
+            vidas--;
+            console.log("colisión "," vidarestante: ", vidas);
+        }
+
+        if(colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+           colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+           colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+           colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+           colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+           colision(tortuga4.x, tortuga4.y, tortuga4.anchoCanvas, tortuga4.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+           ){
+            tortuga4.x=300;
+            tortuga4.y=570;
+            vidas--;
+            console.log("colisión "," vidarestante: ", vidas);
+        }
+
+
         if(vidas == 0){
             pierde = 1;
         }
