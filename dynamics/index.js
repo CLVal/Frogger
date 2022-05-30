@@ -38,7 +38,6 @@ function colision(x1, y1, w1, h1, x2, y2, w2, h2) {
 
     return coli;
 }
-
 //cookies 
 if (ganar == 4) {
     let día = new Date();
@@ -318,6 +317,7 @@ function cronometrar(){
 function escribir(){
     var hrs_aux, min_aux, seg_aux;
     seg++;
+    con ++;
     if (seg>59){
         min++;seg=0;
     }
@@ -351,9 +351,25 @@ function reiniciar(){
     clearInterval(intervalo);
     contador.innerHTML="00:00:00";
     hrs=0;min=0;seg=0;
+    con=0;
 }
 
 function parar(){
 clearInterval(intervalo);
 }
 
+// aceptar.addEventListener("click",()=>{
+//     cookievalue = usuario.value;
+//     con_usuario.style.display = "none";
+//     if(ganar == 1){
+//         //creo que sí;
+//         //cookies
+//         var cookievalue = "BEPC"; 
+//         let día = new Date();
+//         día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
+//         cookievalue = usuario.value;
+//         document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+//         cookievalue = con;
+//         document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+//     }    
+// });
