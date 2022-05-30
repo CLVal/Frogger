@@ -5,6 +5,12 @@ const usuario = document.getElementById("usuario");
 const aceptar = document.getElementById("aceptar");
 const con_usuario = document.getElementById("con_usuario");
 const noVidas = document.getElementById("noVidas");
+const contenedor_lirios = document.getElementById("contenedor_lirios");
+const lirio11 = document.getElementById("lirio11");
+const lirio22 = document.getElementById("lirio22");
+const lirio33 = document.getElementById("lirio33");
+const lirio44 = document.getElementById("lirio44");
+
 let intervalo = 0;
 let ganar = 0;
 let hrs = 0;
@@ -93,6 +99,18 @@ let sprite = 0;
 
 function fondo(){
     ctx.drawImage(lago, 0,0, 720, 630);
+    // if(lirio1==1 && colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 0){
+    //     console.log("imprimiendo tortugas");
+    //     ctx.drawImage(tortuga1.img, 47, 12, 103, 156, dibujaX, dibujaY, 40, 50);
+    //     console.log("imprimiendo tortugas2");
+    // }else if(lirio2==1 && colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 0){
+    //     console.log("imprimiendo tortugas");
+    //     // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+    // }else if(lirio3==1 && colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 0){
+    //     // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+    // }else if(lirio4==1 && colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 0){
+    //     // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+    // }
 
     if(jugar==0){
         ctx.strokeStyle="#ffffff";
@@ -104,12 +122,6 @@ function fondo(){
         ctx.fillStyle="#ffffff";
         ctx.fillText("Presiona enter para pausar", canvas.width/2, canvas.height/4*3);
         ctx.textAlign = "center";
-
-
-
-
-
-
     }
 
     if(pierde == 1){
@@ -130,7 +142,6 @@ function fondo(){
             document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
             cookievalue = con;
             document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
-            
         });
         
     }
@@ -152,31 +163,35 @@ function fondo(){
         tortuga1.sprites();
         noVidas.innerHTML = vidas; 
 
-        if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
-           colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
-           ){
-            tortuga1.x=300;
-            tortuga1.y=570;
-            vidas--;
+
+
+        // if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, slime.x, slime.y, slime.altoSprite, slime.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, morada.x, morada.y, morada.altoSprite, morada.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, tronco.x, tronco.y, tronco.altoSprite, tronco.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, gato.x, gato.y, gato.altoSprite, gato.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, coete.x, coete.y, coete.altoSprite, coete.altoCanvas) || 
+        //    colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, pez.x, pez.y, pez.altoSprite, pez.altoCanvas)
+        //    ){
+        //     tortuga1.x=300;
+        //     tortuga1.y=570;
+        //     vidas--;
             
-            console.log("colisión "," vidarestante: ", vidas);
+        //     console.log("colisión "," vidarestante: ", vidas);
 
-            if(vidas == 3){
-                tortuga1.img.src ="statics/img/tortuga2.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 2){
-                tortuga1.img.src ="statics/img/tortuga3.png";
-                console.log("entras?nomanches");
-            } else if(vidas == 1){
-                tortuga1.img.src ="statics/img/tortuga4.png";
-                console.log("entras?nomanches");
-            }
+        //     if(vidas == 3){
+        //         tortuga1.img.src ="statics/img/tortuga2.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 2){
+        //         tortuga1.img.src ="statics/img/tortuga3.png";
+        //         console.log("entras?nomanches");
+        //     } else if(vidas == 1){
+        //         tortuga1.img.src ="statics/img/tortuga4.png";
+        //         console.log("entras?nomanches");
+        //     }
 
-        }      
+        // }      
+
+        
 
         if(vidas == 0){
             pierde = 1;
@@ -191,15 +206,26 @@ function fondo(){
             lirio2 = 0;
             lirio3 = 0;
             lirio4 = 0;
+            lirio44.style.display="none";
+            lirio33.style.display="none";
+            lirio22.style.display="none";
+            lirio11.style.display="none";
             contador.parentElement.style.display = "none";
             noVidas.parentElement.style.display = "none";
         }
+
+        
 
         if(colision(tortuga1.x, tortuga1.y, tortuga1.anchoCanvas, tortuga1.altoCanvas, 105, 135, 10, 10) == 1 && lirio1==0){
             ganar+=1;
             console.log(ganar);
             lirio1=1;
-            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            dibujaX = tortuga1.x;
+            dibujaY = tortuga1.Y;
+            // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // contenedor_lirios.innerHTML = '<div id="lirio11">X</div>;'
+            lirio11.style.display="block";
+
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -216,7 +242,10 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio2=1;
-            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // contenedor_lirios.innerHTML = '<div id="lirio22">X</div>;'
+            lirio22.style.display="block";
+            
+            // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -233,7 +262,10 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio3=1;
-            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // contenedor_lirios.innerHTML = '<div id="lirio33">X</div>;'
+            lirio33.style.display="block";
+
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -250,7 +282,9 @@ function fondo(){
             ganar+=1;
             console.log(ganar);
             lirio4=1;
-            ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // ctx.drawImage(tortuga1.img, 47, 12, 103, 156, tortuga1.x, tortuga1.y, 40, 55);
+            // contenedor_lirios.innerHTML = '<div id="lirio44">X</div>;'
+            lirio44.style.display="block";
             if(ganar == 1){
                 tortuga1.img.src ="statics/img/tortuga2.png";
                 console.log("entras?nomanches");
@@ -261,9 +295,12 @@ function fondo(){
                 tortuga1.img.src ="statics/img/tortuga4.png";
                 console.log("entras?nomanches");
             }
+
             tortuga1.x=300;
             tortuga1.y=570;
         }
+
+        
 
         if(ganar == 4){
             ganar=0;
@@ -278,6 +315,10 @@ function fondo(){
             lirio2 = 0;
             lirio3 = 0;
             lirio4 = 0;
+            lirio44.style.display="none";
+            lirio33.style.display="none";
+            lirio22.style.display="none";
+            lirio11.style.display="none";
             con_usuario.style.display = "block";
         }
     }

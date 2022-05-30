@@ -21,6 +21,49 @@
 
 }
 
+#lirio11{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    left: 125px;
+    top: 155px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#lirio22{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    left: 325px;
+    top: 160px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#lirio33{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    left: 598px;
+    top: 145px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#lirio44{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    left: 557px;
+    top: 163px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
 /* div{
     position: absolute;
     width: 100px;
@@ -28,4 +71,7 @@
     left: 420px;
     top: 82px;
 } */
+
+
+
 
