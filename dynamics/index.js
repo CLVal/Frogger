@@ -16,6 +16,8 @@ const ring = new Audio("./statics/media/audio/sonic-ring-sound-effect-hd.mp3");
 const gameOver = new Audio("./statics/media/audio/undertale-game-over-theme.mp3");
 const victory = new Audio("./statics/media/audio/luma-theme-super-mario-galaxy.mp3");
 
+let victoria=0;
+let cookies = "0";
 let intervalo = 0;
 let ganar = 0;
 let hrs = 0;
@@ -30,6 +32,15 @@ let lirio3=0;
 let lirio4=0;
 let con=0;
 let victoria=0;
+let día = new Date();
+
+if (document.cookie == "") {
+    día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
+    cookievalue = "Default";
+    document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+    cookievalue = 1000;
+    document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+}
 
 const lago = new Image();
 lago.src = "./statics/img/lago.png";
@@ -143,12 +154,18 @@ function fondo(){
             cookievalue = usuario.value;
             con_usuario.style.display = "none";
             var cookievalue = "BEPC"; 
-            let día = new Date();
             día.setTime(día.getTime() + (3 * 24 * 60 * 1000));
-            cookievalue = usuario.value;
-            document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
-            cookievalue = con;
-            document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+            cookies = document.cookie.replace(/(?:(?:^|.*;\s*)puntuación\s*\=\s*([^;]*).*$)|^.*$/, "$1");;
+            if (con < cookies) {
+                cookievalue = usuario.value;
+                document.cookie = "Nombre=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+                cookievalue = con;
+                document.cookie = "puntuación=" + encodeURIComponent( cookievalue ) + "; expires=" + día.toUTCString();
+                cookies = document.cookie.replace(/(?:(?:^|.*;\s*)puntuación\s*\=\s*([^;]*).*$)|^.*$/, "$1");;
+                valor.innerHTML = cookies;
+                cookies = document.cookie.replace(/(?:(?:^|.*;\s*)Nombre\s*\=\s*([^;]*).*$)|^.*$/, "$1");;
+                nombre.innerHTML = cookies;
+            }else{}
         });
         
     }
